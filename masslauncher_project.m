@@ -20,7 +20,12 @@ options = odeset('Event',@(t,w) launchevent(t,w));
 [times,sol]=ode45(@(t,w) diffeq(t,w,m1,m2,k1,k2,g),tspan,init_w,options);
 
 
-plot(times,sol(:,3)); %Velocity of the topmost mass
+plot(times,sol(:,3)); %Position of the topmost mass
+hold on
+plot(times,sol(:,4));
+legend('Position of Top Mass','Velocity of Top Mass');
+
+
 
 end
 
