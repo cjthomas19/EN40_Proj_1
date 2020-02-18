@@ -1,24 +1,30 @@
 function masslauncher_project
 
 % test
+findlaunchvel(1,1,1,1)
 
 end
 
 function launchvel = findlaunchvel(m1,m2,k1,k2)
 
+g = 9.8;
+l1 = 1;
+l2 = 1;
+h1 = 1;
+h2 = 1;
 
-init_w=[0;sqrt(-2*g*(l1+l2+h1+h2-38);0;sqrt(-2*g*(l1+l2+h1+h2-38)];
+init_w=[0;sqrt(-2*g*(l1+l2+h1+h2-38));0;sqrt(-2*g*(l1+l2+h1+h2-38))];
 tspan=[0,10];
 options = odeset('Event',@(t,w) launchevent(t,w));
-[times,sol]=ode45(@(t,w,m1,m2,k1,k2) diffeq(t,w,m1,m2,k1,k2),tspan,init_w,options)
+[times,sol]=ode45(@(t,w) diffeq(t,w,m1,m2,k1,k2,g),tspan,init_w,options);
 
-disp(sol(:,3);
+plot(times,sol(:,3));
 
 
 
 end
 
-function dwdt = diffeq(t,w,m1,m2,k1,k2)
+function dwdt = diffeq(t,w,m1,m2,k1,k2,g)
 
 x1 = w(1);
 v1 = w(2);
