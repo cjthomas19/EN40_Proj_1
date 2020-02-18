@@ -13,7 +13,7 @@ l2 = 1;
 h1 = 1;
 h2 = 1;
 
-init_w=[0;sqrt(-2*g*(l1+l2+h1+h2-38));0;sqrt(-2*g*(l1+l2+h1+h2-38))]; %initial conditions; expression for v1 and v2 generated with 'Big 5' eqns
+init_w=[0;-sqrt(-2*g*(l1+l2+h1+h2-38));0;-sqrt(-2*g*(l1+l2+h1+h2-38))]; %initial conditions; expression for v1 and v2 generated with 'Big 5' eqns
 
 tspan=[0,10];
 options = odeset('Event',@(t,w) launchevent(t,w));
