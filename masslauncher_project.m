@@ -13,20 +13,8 @@ l2 = 1;
 h1 = 1;
 h2 = 1;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-init_w=[0;sqrt(-2*g*(l1+l2+h1+h2-38);0;sqrt(-2*g*(l1+l2+h1+h2-38)]; %initial conditions; expression for v1 and v2 generated with 'Big 5' eqns
-=======
-init_w=[0;sqrt(-2*g*(l1+l2+h1+h2-38));0;sqrt(-2*g*(l1+l2+h1+h2-38))];
->>>>>>> ec8b207c4a14c69f6c67e73accb8c056e4f6f5b5
-=======
-init_w=[0;sqrt(-2*g*(l1+l2+h1+h2-38));0;sqrt(-2*g*(l1+l2+h1+h2-38))];
->>>>>>> ec8b207c4a14c69f6c67e73accb8c056e4f6f5b5
-=======
 init_w=[0;sqrt(-2*g*(l1+l2+h1+h2-38));0;sqrt(-2*g*(l1+l2+h1+h2-38))]; %initial conditions; expression for v1 and v2 generated with 'Big 5' eqns
 
->>>>>>> ef833f4ffab376753a9a7b74568be2515b895874
 tspan=[0,10];
 options = odeset('Event',@(t,w) launchevent(t,w));
 [times,sol]=ode45(@(t,w) diffeq(t,w,m1,m2,k1,k2,g),tspan,init_w,options);
