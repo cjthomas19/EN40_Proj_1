@@ -7,6 +7,14 @@ end
 function launchvel = findlaunchvel(m1,m2,k1,k2)
 
 
+init_w=[0;sqrt(-2*g*(l1+l2+h1+h2-38);0;sqrt(-2*g*(l1+l2+h1+h2-38)];
+tspan=[0,10];
+options = odeset('Event',@(t,w) launchevent(t,w));
+[times,sol]=ode45(@(t,w,m1,m2,k1,k2) diffeq(t,w,m1,m2,k1,k2),tspan,init_w,options)
+
+disp(sol(:,3);
+
+
 
 end
 
