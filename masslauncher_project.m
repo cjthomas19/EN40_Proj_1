@@ -26,5 +26,7 @@ dwdt=[dx1dt;dv1dt;dx2dt;dv2dt];
 end
 
 function [e_val, stop_val, e_dir] = launchevent(t,w)
-
+e_val = w(3);
+e_dir = 1;
+stop_val = 1;
 end
