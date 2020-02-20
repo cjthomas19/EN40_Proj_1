@@ -25,15 +25,12 @@ tspan=[0,10];
 options = odeset('Event',@(t,w) launchevent(t,w));
 [times,sol]=ode45(@(t,w) diffeq(t,w,m1,m2,m3,k1,k2,k3,g),tspan,init_w,options);
 
-
 plot(times,sol(:,5)); %Position of the topmost mass
 hold on
 plot(times,sol(:,6));
 legend('Position of Top Mass','Velocity of Top Mass');
 launchvel=sol(end,6);
 disp(launchvel);
-
-
 
 end
 
@@ -62,4 +59,5 @@ function [e_val, stop_val, e_dir] = launchevent(t,w)
 e_val = w(5)-w(3);
 e_dir = 1;
 stop_val = 1;
+e_dir = 1;
 end %sets up the option to stop 
