@@ -16,6 +16,12 @@ max_val = - max_vel;
 
 disp(max_val);
 disp(optimal_soln);
+
+%add in matrix of stock values, and use 'round' function to calculate
+%actual launch velocity
+%(alternatively, add in values manually to determine optimal launch
+%velocity)
+
 end
 
 function vel = objective(v) 
@@ -44,6 +50,8 @@ launchvel=sol(end,6);
 
 end
 
+
+
 function dwdt = diffeq(t,w,m1,m2,m3,k1,k2,k3,g)
 
 x1 = w(1);
@@ -53,7 +61,7 @@ v2 = w(4);
 x3 = w(5);
 v3 = w(6);
 
-%% TODO: Finish writing diff-eq
+
 dv1dt= (k2 * (x2 - x1) - m1 * g - k1 * x1) / m1;
 dv2dt= (k3 * (x3 - x2) - k2 * (x2 - x1) - m2 * g)/m2;
 dv3dt = (-k3 * (x3 - x2) - m2 * g)/m3;
@@ -61,7 +69,7 @@ dx1dt=v1;
 dx2dt=v2;
 dx3dt=v3;
 
-dwdt=[dx1dt;dv1dt;dx2dt;dv2dt;dx3dt;dv3dt]; %sets up the two differential equations
+dwdt=[dx1dt;dv1dt;dx2dt;dv2dt;dx3dt;dv3dt]; %sets up the three differential equations
 
 end
 
