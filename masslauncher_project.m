@@ -24,6 +24,8 @@ plot(times,sol(:,3)); %Position of the topmost mass
 hold on
 plot(times,sol(:,4));
 legend('Position of Top Mass','Velocity of Top Mass');
+launchvel=sol(end,4);
+disp(launchvel);
 
 
 
