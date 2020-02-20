@@ -2,7 +2,7 @@ function masslauncher_project
 clear all;
 close all;
 
-init_guess = [3,1,0.1,500,200,20];
+init_guess = [3,1,0.5,500,200,20];
 
 min_vars = [0.117,0.117,0.117,15,15,15];
 max_vars = [5.84,5.84,5.84,1310,1310,1310];
