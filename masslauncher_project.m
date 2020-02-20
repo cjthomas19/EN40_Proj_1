@@ -14,13 +14,10 @@ C = []; d = [];
 [optimal_soln,max_vel]=fmincon(@(v) objective(v),init_guess,A,b,C,d,min_vars,max_vars);
 max_val = - max_vel;
 
+disp('Optimal Maximum Velocity is...');
 disp(max_val);
+disp('m1 m2 m3 k1 k2 k3');
 disp(optimal_soln);
-
-%add in matrix of stock values, and use 'round' function to calculate
-%actual launch velocity
-%(alternatively, add in values manually to determine optimal launch
-%velocity)
 
 end
 
