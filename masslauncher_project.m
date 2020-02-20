@@ -8,13 +8,13 @@ min_vars = [0.117,0.117,0.117,15,15,15];
 max_vars = [5.84,5.84,5.84,1310,1310,1310];
 
 
-A = [];
+A = [1,1,1,0,0,0]; b = [7];
 C = []; d = [];
 
 [optimal_soln,max_vel]=fmincon(@(v) objective(v),init_guess,A,b,C,d,min_vars,max_vars);
 max_val = - max_vel;
 
-
+disp(max_val);
 end
 
 function vel = objective(v) 
@@ -40,12 +40,7 @@ tspan=[0,10];
 options = odeset('Event',@(t,w) launchevent(t,w));
 [times,sol]=ode45(@(t,w) diffeq(t,w,m1,m2,m3,k1,k2,k3,g),tspan,init_w,options);
 
-plot(times,sol(:,5)); %Position of the topmost mass
-hold on
-plot(times,sol(:,6));
-legend('Position of Top Mass','Velocity of Top Mass');
 launchvel=sol(end,6);
-disp(launchvel);
 
 end
 
