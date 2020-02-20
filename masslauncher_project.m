@@ -2,8 +2,23 @@ function masslauncher_project
 clear all;
 close all;
 
-findlaunchvel(3,1,0.1,1310,200,15);
+init_guess = [3,1,0.1,500,200,20];
 
+min_vars = [0.117,0.117,0.117,15,15,15];
+max_vars = [5.84,5.84,5.84,1310,1310,1310];
+
+
+A = [];
+C = []; d = [];
+
+[optimal_soln,max_vel]=fmincon(@(v) objective(v),init_guess,A,b,C,d,min_vars,max_vars);
+max_val = - max_vel;
+
+
+end
+
+function vel = objective(v) 
+    vel = -1 * findlaunchvel(v(1),v(2),v(3),v(4),v(5),v(6));
 end
 
 function launchvel = findlaunchvel(m1,m2,m3,k1,k2,k3)
