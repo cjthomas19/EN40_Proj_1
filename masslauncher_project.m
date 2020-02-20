@@ -15,6 +15,7 @@ C = []; d = [];
 max_val = - max_vel;
 
 disp(max_val);
+disp(optimal_soln);
 end
 
 function vel = objective(v) 
@@ -34,7 +35,6 @@ k2 = k2 * 12;
 k3 = k3 * 12;
 
 init_w = [0;-14.2;0;-14.2;0;-14.2];
-
 
 tspan=[0,10];
 options = odeset('Event',@(t,w) launchevent(t,w));
