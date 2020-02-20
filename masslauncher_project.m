@@ -2,17 +2,24 @@ function masslauncher_project
 clear all;
 close all;
 
-findlaunchvel(3,3,0.1,15,15,15);
+findlaunchvel(3,1,0.1,1310,200,15);
 
 end
 
-function launchvel = findlaunchvel(w1,w2,w3,k1,k2,k3)
+function launchvel = findlaunchvel(m1,m2,m3,k1,k2,k3)
 
-m1 = w1 * 0.03108095;
-m2 = w2 * 0.03108095;
-m3 = w3 * 0.03108095;
+g = 32; %ft / s^2
 
-init_w = [0;-1;0;-1;0;-1];
+m1 = m1 * 0.03108095; %lbs to slugs (lb * s^2 / ft)
+m2 = m2 * 0.03108095;
+m3 = m3 * 0.03108095;
+
+k1 = k1 * 12; % lbs/in to lbs/ft
+k2 = k2 * 12;
+k3 = k3 * 12;
+
+init_w = [0;-14.2;0;-14.2;0;-14.2];
+
 
 tspan=[0,10];
 options = odeset('Event',@(t,w) launchevent(t,w));
@@ -52,7 +59,7 @@ dwdt=[dx1dt;dv1dt;dx2dt;dv2dt;dx3dt;dv3dt]; %sets up the two differential equati
 end
 
 function [e_val, stop_val, e_dir] = launchevent(t,w)
-e_val = w(5);
+e_val = w(5)-w(3);
 e_dir = 1;
 stop_val = 1;
 end %sets up the option to stop 
