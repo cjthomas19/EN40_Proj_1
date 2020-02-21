@@ -90,9 +90,12 @@ k1 = k1 * 12; % lbs/in to lbs/ft
 k2 = k2 * 12; %we chose feet as our unit of distance, designing around
 k3 = k3 * 12; %slugs, so spring constants need to be adjusted
 
+%
+v0 = -sqrt(2 * g * (38-18.41)/12);
+
 %initial values of the w function for ode45, based on initial displacements
 %and an initial velocity calculated from the distance fallen
-init_w = [0;-14.2;0;-14.2;0;-14.2]; 
+init_w = [0;v0;0;v0;0;v0]; 
 
 %the event function should stop ode45 before this, but large time range to
 %be safe

@@ -58,7 +58,7 @@ for mass = 1:(data_dim(2)-1)
 end
 
 %Plot a vertical line at the expected velocity from our velocity prediction
-expected_mass_3_vel = 55.1323;
+expected_mass_3_vel = 39.9574;
 expected_graph(1:(data_dim(1)-1)) = expected_mass_3_vel;
 plot(velocity_matrix(:,1),expected_graph);
 
