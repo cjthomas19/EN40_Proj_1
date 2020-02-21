@@ -68,5 +68,6 @@ title("Measured Mass Velocities vs. Time");
 xlabel("t (s)");
 ylabel("velocity (ft/s)");
 
-
+%To find launch velocity, should be max velocity of the puck
+disp("Max Velocity of Top Mass: " + max(max(velocity_matrix(:,4))));
 end
