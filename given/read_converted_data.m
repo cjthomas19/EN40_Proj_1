@@ -64,7 +64,7 @@ expected_graph(1:(data_dim(1)-1)) = expected_mass_3_vel;
 plot(velocity_matrix(:,1),expected_graph);
 
 %Make the graph easier to read with labels and a legend
-legend(["Mass 1 (bottom)","Mass 2 (middle)","Mass 3 (top)"]);
+legend(["Mass 1 (bottom)","Mass 2 (middle)","Mass 3 (top)","Estimated Launch Velocity"]);
 title("Measured Mass Velocities vs. Time");
 xlabel("t (s)");
 ylabel("velocity (ft/s)");
