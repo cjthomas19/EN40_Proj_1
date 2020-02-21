@@ -46,6 +46,17 @@ hold on;
 plot(times, (solns(:,3) - solns(:,1)) * 12);
 plot(times, (solns(:,5) - solns(:,3)) * 12);
 
+%Find max deflections (compressions) of springs
+
+disp("Highest Deflections (inches)");
+
+%Using mins because compressions represent negative values
+%All of these are below the maximum deflection listed for each of the
+%springs
+disp("Spring 1: " + min(min((solns(:,1)) * 12)));
+disp("Spring 2: " + min(min(((solns(:,3) - solns(:,1)) * 12))));
+disp("Spring 3: " + min(min(((solns(:,5) - solns(:,3)) * 12))));
+
 title("Spring Compressions vs. Time");
 xlabel("t (s)");
 ylabel("Compression (in)");
