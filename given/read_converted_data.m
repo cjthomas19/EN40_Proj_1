@@ -57,6 +57,11 @@ for mass = 1:(data_dim(2)-1)
     hold on;
 end
 
+%Plot a vertical line at the expected velocity from our velocity prediction
+expected_mass_3_vel = 55.1323;
+expected_graph(1:(data_dim(1)-1)) = expected_mass_3_vel;
+plot(velocity_matrix(:,1),expected_graph);
+
 %Make the graph easier to read with labels and a legend
 legend(["Mass 1 (bottom)","Mass 2 (middle)","Mass 3 (top)"]);
 title("Measured Mass Velocities vs. Time");
