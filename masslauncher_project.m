@@ -19,9 +19,13 @@ disp(max_val);
 disp('m1 m2 m3 k1 k2 k3');
 disp(optimal_soln);
 
+actual_vel=findlaunchvel(5.84,0.829,.117,959,134.44,15);
+disp('Actual velocity based on available masses and springs...');
+disp(actual_vel);
+
 end
 
-function vel = objective(v) 
+function vel = objective(v)
     vel = -1 * findlaunchvel(v(1),v(2),v(3),v(4),v(5),v(6));
 end
 
