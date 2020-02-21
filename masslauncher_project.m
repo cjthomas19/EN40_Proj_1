@@ -48,8 +48,20 @@ plot(times, (solns(:,5) - solns(:,3)) * 12);
 
 title("Spring Compressions vs. Time");
 xlabel("t (s)");
-ylabel("displacement (in)");
+ylabel("Compression (in)");
 legend(["Spring 1","Spring 2", "Spring 3"]);
+
+%plot displacements as a function of time
+figure;
+plot(times,solns(:,1) * 12);
+hold on;
+plot(times,solns(:,3) * 12);
+plot(times,solns(:,5) * 12);
+
+title("Displacements vs. Time");
+xlabel("t (s)");
+ylabel("Displacement (in)");
+legend(["Mass 1","Mass 2", "Mass 3"]);
 
 end
 
