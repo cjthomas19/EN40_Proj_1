@@ -34,18 +34,39 @@ disp(optimal_soln);
 
 %These are actual values of the springs/masses available closest to our
 %calculated values. Here we check the theoretical final velocity
-actual_vel=findlaunchvel(5.84,0.829,.117,959,134.44,15);
+[times,solns]=solveforlaunchvel(5.84,0.829,.117,959,134.44,15);
+actual_vel=solns(end,6);
 disp('Actual velocity based on available masses and springs...');
 disp(actual_vel);
+
+%plot spring compressions
+figure;
+plot(times, (solns(:,1)) * 12);
+hold on;
+plot(times, (solns(:,3) - solns(:,1)) * 12);
+plot(times, (solns(:,5) - solns(:,3)) * 12);
+
+title("Spring Compressions vs. Time");
+xlabel("t (s)");
+ylabel("displacement (in)");
+legend(["Spring 1","Spring 2", "Spring 3"]);
 
 end
 
 function vel = objective(v)
 %Define the objective function with our function to find velocity
-vel = -1 * findlaunchvel(v(1),v(2),v(3),v(4),v(5),v(6));
+
+%find solutions for given v
+[t,sol] = solveforlaunchvel(v(1),v(2),v(3),v(4),v(5),v(6));
+
+%because the event function should stop the calculation when the mass
+%leaves, the launch velocity will be the final velocity of m3 in solution
+launchvel=sol(end,6);
+
+vel = -1 * launchvel;
 end
 
-function launchvel = findlaunchvel(m1,m2,m3,k1,k2,k3)
+function [times,solns] = solveforlaunchvel(m1,m2,m3,k1,k2,k3)
 
 g = 32.17; % define g in units of ft / s^2
 
@@ -69,11 +90,8 @@ tspan=[0,10];
 options = odeset('Event',@(t,w) launchevent(t,w));
 
 %solve the diff eqs with given variables
-[times,sol]=ode45(@(t,w) diffeq(t,w,m1,m2,m3,k1,k2,k3,g),tspan,init_w,options);
+[times,solns]=ode45(@(t,w) diffeq(t,w,m1,m2,m3,k1,k2,k3,g),tspan,init_w,options);
 
-%because the event function should stop the calculation when the mass
-%leaves, the launch velocity will be the final velocity of m3 in solution
-launchvel=sol(end,6);
 
 end
 
