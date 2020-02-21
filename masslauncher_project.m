@@ -8,7 +8,7 @@ close all;
 
 %Intuitively, it makes sense that the heaviest mass and stiffest springs
 %should be at the bottom, so this is our initial guess
-init_guess = [3,1,0.5,500,200,20];
+init_guess = [3,2,1,1000,200,10];
 
 %Minimum and maximum weights/spring constants from problem description
 min_vars = [0.117,0.117,0.117,15,15,15];
@@ -80,7 +80,7 @@ end
 
 function [times,solns] = solveforlaunchvel(m1,m2,m3,k1,k2,k3)
 
-g = 32.17; % define g in units of ft / s^2
+g = 32.2; % define g in units of ft / s^2
 
 m1 = m1 * 0.03108095; %lbs to slugs (slugs are lb * s^2 / ft)
 m2 = m2 * 0.03108095; %we do this conversion because slugs are a unit of
@@ -90,7 +90,8 @@ k1 = k1 * 12; % lbs/in to lbs/ft
 k2 = k2 * 12; %we chose feet as our unit of distance, designing around
 k3 = k3 * 12; %slugs, so spring constants need to be adjusted
 
-%
+%Calculate initial velocity based on the estimated length of our
+%contraption - subtracting length from the maximum 38 inches
 v0 = -sqrt(2 * g * (38-18.41)/12);
 
 %initial values of the w function for ode45, based on initial displacements
